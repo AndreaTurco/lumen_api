@@ -14,7 +14,7 @@ class ProductController extends BaseController{
      */
     public function index()
     {
-        $coursesCollection = Product::all();
+        $coursesCollection = Product::paginate(15);
         return response()->json($coursesCollection);
     }
     
@@ -34,12 +34,12 @@ class ProductController extends BaseController{
     {
         $product = Product::find($id);
         $product->update($request->all());
-        return response()->json(Product::all());
+        return $this->index();
     }
     
     public function delete($id)
     {
         Product::destroy($id);
-        return response()->json(Product::all());
+        return $this->index();
     }
 }
