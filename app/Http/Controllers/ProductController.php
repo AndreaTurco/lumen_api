@@ -4,6 +4,7 @@ namespace app\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+use App\Events\ProductAddedEvent;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class ProductController extends BaseController{
@@ -38,7 +39,7 @@ class ProductController extends BaseController{
             'description' => $request['description'],
             'price'       => $request['price'],
         ]);
-
+        event(new ProductAddedEvent($product));
         return response()->json($product);
     }
 
