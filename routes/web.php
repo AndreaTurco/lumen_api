@@ -14,9 +14,6 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
-$app->get('/foo', function (){
-    return "foooooooooo";
-});
 
 /**
  * product management
@@ -27,12 +24,3 @@ $app->post('api/products','ProductController@add');
 $app->put('api/products/{id}','ProductController@update');
 $app->delete('api/products/{id}','ProductController@delete');
 //});
-
-/**
- * $app->group(['prefix' => 'api','namespace' => 'App\Http\Controllers'], function($app){
-$app->get('products','ProductController@index');
-$app->post('products','ProductController@add');
-$app->put('products/{id}','ProductController@update');
-$app->delete('products/{id}','ProductController@delete');
-});
- */
