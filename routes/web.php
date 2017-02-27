@@ -15,6 +15,14 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
+/************
+ * allow cors Call
+ */
+
+$app->options('{all:.*}', ['middleware' => 'cors.options', function() {
+    return response('');
+}]);
+
 /**
  * product management
  */
